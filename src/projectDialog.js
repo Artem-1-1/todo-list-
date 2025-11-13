@@ -12,12 +12,6 @@ class ProjectDialog {
       form.id = 'form';
       form.method = 'dialog';
 
-      const labelTitle = document.createElement('label');
-      labelTitle.id = 'label-title';
-      labelTitle.textContent = 'New Project';
-
-      const hr = document.createElement('hr');
-
       const projectName = document.createElement('label');
       projectName.id = 'p-title';
       projectName.setAttribute('for', 'title');
@@ -42,13 +36,11 @@ class ProjectDialog {
       cancelBtn.id = 'dialogBtn';
       cancelBtn.textContent = 'Cancel';
       cancelBtn.type = 'button';
-      cancelBtn.addEventListener('click', ()=> dialog.close());
+      cancelBtn.addEventListener('click', () => dialog.close());
 
       btnContainer.appendChild(submitBtn);
       btnContainer.appendChild(cancelBtn);
 
-      form.appendChild(labelTitle);
-      form.appendChild(hr);
       form.appendChild(projectName);
       form.appendChild(input);
       form.appendChild(btnContainer);

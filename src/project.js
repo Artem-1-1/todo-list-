@@ -28,7 +28,7 @@ class Todo{
     priority.textContent = `Priority : ${this.priority}`;
 
     const date = document.createElement('span');
-    date.textContent = `  | Added on: ${this.time}`;
+    date.textContent = `   Added on: ${this.time}`;
 
     const deleteBtn = document.createElement('button');
     deleteBtn.textContent = 'Delete';

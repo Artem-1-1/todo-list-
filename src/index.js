@@ -46,6 +46,7 @@ function renderProjectContent(projectName) {
 
   const header = document.createElement('h2');
   header.textContent = `Project: ${projectName}`;
+  header.id = 'header';
 
   const addTodoBtn = document.createElement('button');
   addTodoBtn.textContent = 'Add Task';
