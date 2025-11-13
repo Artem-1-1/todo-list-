@@ -44,6 +44,13 @@ main {
     grid-row: 1 / 3;
 }
 
+.todo-item {
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	border: 1px solid black;
+}
+
 footer {
 	height: var(--footer-height);
 	background-color: var(--medium-dark-blue);

@@ -61,15 +61,27 @@ function renderProjectContent(projectName) {
 
     if (title) {
       const todo = new Todo(title, description, priority);
-      todoContainer.appendChild(todo.renderTodo());
-    }
-  });
+
+      const projects = storage.getAllProjects();
+      projects[projectName].push({
+        id: todo.id,
+        title: todo.title,
+        description: todo.description,
+        priority: todo.priority,
+        time: todo.time
+      });
+      storage.saveAllProjects(projects);
+
+      todoContainer.appendChild(todo.renderTodo(projectName));
+  }
+});
 
   const project = storage.getAllProjects();
   const todos = project[projectName] || [];
   todos.forEach(t => {
-    const todo = new Todo(t.title, t.description, t.priority);
-    todoContainer.appendChild(todo.renderTodo());
+    const todo = new Todo(t.title, t.description, t.priority, t.id, t.time);
+    todo.time = t.time;
+    todoContainer.appendChild(todo.renderTodo(projectName));
   });
 
   content.append(header, addTodoBtn, todoContainer);
