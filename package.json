@@ -278,7 +278,9 @@
     "ws": "^8.18.3",
     "wsl-utils": "^0.1.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^9.39.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.prod.js",
