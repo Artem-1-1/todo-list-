@@ -56,26 +56,32 @@ function renderProjectContent(projectName) {
   const todoContainer = document.createElement('div');
   todoContainer.id = 'todoContainer';
 
-  addTodoBtn.addEventListener('click', () => {
-    const title = prompt('Enter Task Title:');
-    const description = prompt('Enter Description:')
-    const priority = prompt('Priority (Low, Medium, High):', 'Low');
+  addTodoBtn.addEventListener('click', async () => {
 
-    if (title) {
-      const todo = new Todo(title, description, priority);
+  const dialog = new taskDialog('content');
+  const data = await dialog.open();
+  if (!data) return;
 
-      const projects = storage.getAllProjects();
-      projects[projectName].push({
-        id: todo.id,
-        title: todo.title,
-        description: todo.description,
-        priority: todo.priority,
-        time: todo.time
-      });
-      storage.saveAllProjects(projects);
+  const formattedDate = new Date(data.date).toLocaleDateString('en-US', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
 
-      todoContainer.appendChild(todo.renderTodo(projectName));
-  }
+  const todo = new Todo(data.taskName, data.taskDesc, data.priority, null, formattedDate);
+
+  const projects = storage.getAllProjects();
+  projects[projectName].push({
+    id: todo.id,
+    title: todo.title,
+    description: todo.description,
+    priority: todo.priority,
+    time: todo.time
+  });
+
+  storage.saveAllProjects(projects);
+  todoContainer.appendChild(todo.renderTodo(projectName));
 });
 
   const project = storage.getAllProjects();

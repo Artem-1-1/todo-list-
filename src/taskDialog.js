@@ -1,5 +1,3 @@
-import { appendChild } from "domutils";
-
 class taskDialog{
   constructor(containerId) {
     this.container = document.getElementById(containerId)
@@ -33,7 +31,7 @@ class taskDialog{
       textarea.placeholder = 'Description';
       textarea.rows = 3;
       textarea.id = 'textarea';
-      input.required = true;
+      textarea.required = true;
 
       const divOne = document.createElement('div');
       divOne.classList.add('label-input');
@@ -75,7 +73,6 @@ class taskDialog{
       cancelBtn.id = 'dialogBtn';
       cancelBtn.textContent = 'Cancel';
       cancelBtn.type = 'button';
-      cancelBtn.addEventListener('click', () => dialog.close());
 
       form.appendChild(title);
       form.appendChild(titleLabel);
@@ -91,6 +88,7 @@ class taskDialog{
       select.appendChild(optionTwo);
       select.appendChild(optionThree);
       divTwo.appendChild(select);
+      form.appendChild(divTwo);
 
       btnContainer.appendChild(submitBtn);
       btnContainer.appendChild(cancelBtn);
@@ -99,14 +97,30 @@ class taskDialog{
       dialog.appendChild(form);
       this.container.appendChild(dialog);
 
+      dialog.showModal();
+
+      const cleanupAndResolveNull = () => {
+        if (this.container.contains(dialog)) this.container.removeChild(dialog);
+        resolve(null);
+      };
+
+      cancelBtn.addEventListener('click', () => {
+        dialog.close();
+        cleanupAndResolveNull();
+      });
+
       submitBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        const taskName = input.value;
-        const taskDesc = textarea.value;
-        const date = labelOne.value;
-        const priority = labelTwo.value;
+        const taskName = input.value.trim();
+        const taskDesc = textarea.value.trim();
+        const date = inputOne.value;
+        const priority = select.value;
+
+        if (this.container.contains(dialog)) this.container.removeChild(dialog);
+
+
         dialog.close();
-        resolve(taskName, taskDesc, date, priority)
+        resolve({taskName, taskDesc, date, priority})
       })
     })
   }
