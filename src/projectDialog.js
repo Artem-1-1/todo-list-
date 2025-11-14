@@ -28,12 +28,12 @@ class ProjectDialog {
       btnContainer.id = 'btnContainer';
 
       const submitBtn = document.createElement('button');
-      submitBtn.id = 'dialogBtn';
+      submitBtn.id = 'create';
       submitBtn.textContent = 'Create';
       submitBtn.type = 'submit';
 
       const cancelBtn = document.createElement('button');
-      cancelBtn.id = 'dialogBtn';
+      cancelBtn.id = 'cancel';
       cancelBtn.textContent = 'Cancel';
       cancelBtn.type = 'button';
       cancelBtn.addEventListener('click', () => dialog.close());

@@ -1,9 +1,12 @@
 :root {
-    --medium-dark-blue: #128277;
-    --white-color : #fff;
-    --header-height: 3rem;
+  --medium-dark-blue: #128277;
+  --white-color : #fff;
+  --header-height: 3rem;
 	--footer-height: 3rem;
 	--content-height: calc(100vh - calc(var(--header-height) + var(--footer-height)));
+	--light-blur-color: #1995ad;
+	--green-color: #598234;
+	--red-color: #d61800;
 }
 
 body {
@@ -14,11 +17,11 @@ body {
 }
 
 header {
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-    height: var(--header-height);
-    background-color: var(--medium-dark-blue);
+	display: flex;
+	align-items: center;
+	padding: 1rem;
+	height: var(--header-height);
+	background-color: var(--medium-dark-blue);
 }
 
 header > h1 {
@@ -53,18 +56,41 @@ main {
 	justify-content: space-around;
 }
 
-#addProject {
+#addProject,
+#addTodo {
 	padding: 0.5rem;
 	margin: 1rem;
 	border-radius: 0.5rem;
+	background-color: var(--light-blur-color);
+	font-size: 1rem;
+	color: var(--white-color);
+	font-weight: 600;
 }
 
 hr {
 	width: 70%;
 }
 
+#delete,
+#cancel,
+#create,
+.delete-todo-btn {
+	padding: 0.3rem;
+	border-radius: 0.3rem;
+	background-color: var(--red-color);
+	font-weight: 600;
+	color: var(--white-color);
+}
+
+#create {
+	background-color: var(--green-color);
+	
+}
+
 .project-name {
 	cursor: pointer;
+	font-weight: 600;
+	font-size: 1.5rem;
 }
 
 #header {
@@ -81,6 +107,7 @@ hr {
 	align-items: center;
 	justify-content: space-evenly;
 	border: 1px solid black;
+	margin-top: 0.5rem;
 }
 
 #todoContainer {
