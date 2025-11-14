@@ -83,6 +83,11 @@ hr {
 	border: 1px solid black;
 }
 
+#todoContainer {
+	width: 90%;
+	margin: auto;
+}
+
 #form {
 	display: flex;
 	flex-direction: column;

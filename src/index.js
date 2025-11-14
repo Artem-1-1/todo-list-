@@ -2,6 +2,7 @@ import "./style.css";
 import { ProjectDialog } from './projectDialog.js';
 import { LocalStorage } from './storage.js';
 import { Todo } from './project.js';
+import { taskDialog } from "./taskDialog.js";
 
 const sideBar = document.getElementById('side-bar');
 const content = document.getElementById('content');
